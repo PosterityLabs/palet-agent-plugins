@@ -1,0 +1,18 @@
+{
+  "name": "palet",
+  "displayName": "Palet",
+  "version": "0.1.0",
+  "description": "Design on a canvas that Cursor can read and write: real layers, variables and components.",
+  "author": {
+    "name": "Palet",
+    "email": "hello@palet.so"
+  },
+  "homepage": "https://palet.so",
+  "repository": "https://github.com/PosterityLabs/palet-agent-plugins",
+  "license": "MIT",
+  "keywords": ["palet", "design", "ui", "canvas", "html", "css", "design-tokens", "design-system", "code-to-design", "design-to-code", "mcp"],
+  "logo": "./assets/logo.svg",
+  "skills": "./skills/",
+  "rules": "./rules/",
+  "mcpServers": "./mcp.json"
+}

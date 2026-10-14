@@ -1,0 +1,53 @@
+{
+  "name": "palet",
+  "version": "0.1.0",
+  "description": "Design on a canvas that Codex can read and write: real layers, variables and components.",
+  "author": {
+    "name": "Palet",
+    "email": "hello@palet.so",
+    "url": "https://palet.so"
+  },
+  "homepage": "https://palet.so",
+  "repository": "https://github.com/PosterityLabs/palet-agent-plugins.git",
+  "license": "MIT",
+  "keywords": [
+    "palet",
+    "design",
+    "ui",
+    "canvas",
+    "html",
+    "css",
+    "design-tokens",
+    "design-system",
+    "code-to-design",
+    "design-to-code",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json",
+  "interface": {
+    "displayName": "Palet",
+    "shortDescription": "Design on a canvas that Codex can read and write.",
+    "longDescription": "Palet is a design canvas built on web standards, with a hosted MCP server. With this plugin, Codex reads your designs as HTML, as an outline or as rendered images, and writes back real layers, variables and components that people keep editing in Palet. Use it to turn your codebase's tokens into a design, implement a Palet design in your code, build a design system with light and dark modes, and find and fix layout issues. Sign in with your Palet account on first use; no API key needed.",
+    "developerName": "Palet",
+    "category": "Design",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://palet.so",
+    "privacyPolicyURL": "https://palet.so/privacy",
+    "brandColor": "#2266EE",
+    "composerIcon": "./assets/logo.svg",
+    "logo": "./assets/logo.svg",
+    "defaultPrompt": [
+      "Use the tokens and styles in my repo to design a settings page in Palet",
+      "Implement my Palet design in this codebase, using its components and tokens",
+      "Build a design system in Palet with light and dark modes, and components for buttons, inputs and cards"
+    ],
+    "screenshots": [
+      "./assets/editor.png",
+      "./assets/overview.png"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "palet",
+  "interface": {
+    "displayName": "Palet"
+  },
+  "plugins": [
+    {
+      "name": "palet",
+      "source": {
+        "source": "local",
+        "path": "./plugins/palet"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
+    }
+  ]
+}

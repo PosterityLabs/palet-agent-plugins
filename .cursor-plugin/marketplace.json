@@ -1,0 +1,18 @@
+{
+  "name": "palet",
+  "owner": {
+    "name": "Palet",
+    "email": "hello@palet.so"
+  },
+  "metadata": {
+    "description": "Palet is a design canvas that agents read and write: real layers, variables and components that people keep editing.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "palet",
+      "source": "./plugins/palet",
+      "description": "Connect to Palet's hosted MCP server and design with it."
+    }
+  ]
+}
