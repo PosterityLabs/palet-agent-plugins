@@ -11,6 +11,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 - `inspect(documentId, nodeId)` on each: every layer's `box`, how many `lines` each text wraps to, and `issues`. It's cheaper than an image; start here.
 - `render` the frames with issues, and any the user cares about visually. `inspect` finds measurable problems; `render` finds the ones it can't (misalignment, uneven spacing, poor contrast).
 - If the document has variables with modes, review each mode: `inspect` and `render` take `modes: "<collection id>:<mode id>"`.
+- Look for hard-coded values: `get_html` the frames and find colours (and repeated sizes) written as literals instead of `var(...)`. A literal that equals a variable's value is rebound to that variable; a colour with no variable gets one first (`set_variables`, named by its role), then is bound. If the document has no variables at all, propose a `Theme` collection (the design-on-canvas skill) before fixing anything else.
 
 ## 2. What each issue means
 
