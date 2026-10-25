@@ -18,7 +18,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## 2. Write classes; the variables are the theme
 
-`write_html` takes Tailwind v4 classes, and the document's variables are the theme:
+`write` takes Tailwind v4 classes, and the document's variables are the theme:
 
 | Variable | Classes |
 |---|---|
@@ -63,7 +63,7 @@ A row, card, bar or label that appears more than once is a component, defined in
 
 ## 5. Check before you say it's done
 
-- `get_html` the frames you drew and scan for colour literals (`#rrggbb`, `rgb(`, `bg-[#…]`). Each one is either bound to a variable or deliberately part of the content (a photo-like gradient, a brand mark), and you can say which.
+- `read` the frames you drew and scan for colour literals (`#rrggbb`, `rgb(`, `bg-[#…]`). Each one is either bound to a variable or deliberately part of the content (a photo-like gradient, a brand mark), and you can say which.
 - Read the write's `ignored` list: it names every class and prop that did nothing.
 - `inspect` for `issues`; `render` and look at it, in every mode you defined.
 - Tell the user the document name, what you built, and the variables you made or used.

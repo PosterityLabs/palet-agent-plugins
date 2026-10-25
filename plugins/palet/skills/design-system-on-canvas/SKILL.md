@@ -11,14 +11,14 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 - One theme collection with `modes: ["light", "dark"]` for colours: `color/background`, `color/foreground`, `color/muted-foreground`, `color/primary`, `color/border`. Give every mode a value.
 - A second collection, single mode, for numbers: `space/1…8`, `radius/sm|md|lg`, `text/sm|md|lg`. A string for the font (`font/body`).
-- These names are the Tailwind theme of `write_html` (`bg-primary`, `gap-3`, `rounded-md`, `text-sm`, `font-body`), so name them for the classes you want to write.
+- These names are the Tailwind theme of `write` (`bg-primary`, `gap-3`, `rounded-md`, `text-sm`, `font-body`), so name them for the classes you want to write.
 - Use aliases for semantic names: `"color/button-bg": {"type": "color", "light": {"alias": "color/primary"}}`.
 - If the repo already has tokens, take them from it (see the code-to-design skill) instead of inventing a palette.
 - Then `get_variables`: you need the collection and mode ids for rendering.
 
 ## 2. Components on their own page
 
-- Define each base component in `write_html` as a `<template data-component="Button">`; it is drawn on the Components page. Style it with theme classes only: `<template data-component="Button" class="flex items-center gap-2 px-4 h-10 rounded-md bg-primary"><p data-prop="label" class="text-sm font-medium text-background">Button</p></template>`.
+- Define each base component in `write` as a `<template data-component="Button">`; it is drawn on the Components page. Style it with theme classes only: `<template data-component="Button" class="flex items-center gap-2 px-4 h-10 rounded-md bg-primary"><p data-prop="label" class="text-sm font-medium text-background">Button</p></template>`.
 - Name the layers you'll override (`data-prop="label"`, `data-prop="icon"`): they are the component's props. Text layers take text, other layers `true`/`false`, a nested instance swaps by component name, an icon (`<svg data-prop="icon" data-icon="plus">`) swaps by icon name.
 - The result's `components` lists each `{id, name, props}`. For a frame drawn earlier, `create_component(documentId, nodeId, id, baseVersion)` makes it a component and returns its `props`.
 

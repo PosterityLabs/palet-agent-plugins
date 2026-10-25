@@ -11,7 +11,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 - `inspect(documentId, nodeId)` on each: every layer's `box`, how many `lines` each text wraps to, and `issues`. It's cheaper than an image; start here.
 - `render` the frames with issues, and any the user cares about visually. `inspect` finds measurable problems; `render` finds the ones it can't (misalignment, uneven spacing, poor contrast).
 - If the document has variables with modes, review each mode: `inspect` and `render` take `modes: "<collection id>:<mode id>"`.
-- Look for hard-coded values: `get_html` the frames and find colours (and repeated sizes) written as literals (`bg-[#…]`, `style="color: …"`) instead of theme classes. A literal that equals a variable's value becomes that variable's class (`bg-primary`); a colour with no variable gets one first (`set_variables`, named by its role), then its class. If the document has no variables at all, propose a `Theme` collection (the design-on-canvas skill) before fixing anything else.
+- Look for hard-coded values: `read` the frames and find colours (and repeated sizes) written as literals (`bg-[#…]`, `style="color: …"`) instead of theme classes. A literal that equals a variable's value becomes that variable's class (`bg-primary`); a colour with no variable gets one first (`set_variables`, named by its role), then its class. If the document has no variables at all, propose a `Theme` collection (the design-on-canvas skill) before fixing anything else.
 
 ## 2. What each issue means
 
@@ -29,7 +29,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## 3. Fix with the smallest write
 
-- `get_html(documentId, nodeId)` for the frame (compact form: classes, instances by name with props), change only what's wrong, and `write_html` it back with that `version` as `baseVersion` and `check: true`. Check the result's `ignored` for classes that did nothing.
+- `read(documentId, nodeId)` for the frame (compact form: classes, instances by name with props), change only what's wrong, and send it back with `write`, using that `version` as `baseVersion` and `check: true`. Check the result's `ignored` for classes that did nothing.
 - For one property on one layer, `apply_transaction` with an `update` op is smaller and safer.
 - A prop on one instance (`<Row title="…"/>`) changes that instance only; fix the component's `<template data-component>` if every instance has the problem. An instance's `class` sets only its box.
 - Repeat until `inspect` returns `issues: []` for every frame you touched, then `render` once more.
@@ -40,7 +40,7 @@ Tell the user what you found, what you changed and what's left for them to decid
 
 ## Common mistakes
 
-- **Leaving layers out of `write_html`.** A layer the HTML leaves out is deleted (the call is refused with `would_delete` unless `allowDelete: true`). Send the frame's full HTML from `get_html`.
+- **Leaving layers out of `write`.** A layer the HTML leaves out is deleted (the call is refused with `would_delete` unless `allowDelete: true`). Send the frame's full HTML from `read`.
 - **Sending stale HTML.** HTML read before a write lacks the ids that write created; sending it again duplicates them. Read again after every write.
 - **Person-wins conflicts.** If someone edited the same property after your read, your change comes back in `skipped`. Read again and decide; don't force it.
 - **Fixing `text_overflow` by shrinking the font.** Fix the box, not the type scale, unless the user asks.

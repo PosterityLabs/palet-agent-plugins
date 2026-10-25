@@ -13,7 +13,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## 2. Read it three ways
 
-- `get_html(documentId, nodeId)`: the structure in Palet's compact form: Tailwind classes, instances by name with props (`<Row title="General"/>`). It's flexbox and grid, close to what you'll write. `style="…"` appears only for values with no class (`left`, `top`).
+- `read(documentId, nodeId)`: the structure in Palet's compact form: Tailwind classes, instances by name with props (`<Row title="General"/>`). It's flexbox and grid, close to what you'll write. `style="…"` appears only for values with no class (`left`, `top`).
 - `get_variables(documentId)`: what each theme class or `(--name)` in that HTML means, per mode.
 - `render(documentId, nodeId)`: what it looks like. Use it to settle anything the HTML leaves unclear.
 
@@ -33,7 +33,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## Common mistakes
 
-- **`get_document` for reading a design.** It returns raw nodes and is large; `get_html` with `nodeId` is the readable form.
+- **`get_document` for reading a design.** It returns raw nodes and is large; `read` with `nodeId` is the readable form.
 - **Literal colours and sizes** (`bg-[#…]`, `h-[52px]`) copied over, when the repo has tokens.
 - **Rebuilding an instance's insides** instead of using the component it points to.
 - **Pixel positions.** `left` / `top` on a nested layer exist only with `absolute`; everything else is flow layout. Don't add absolute positioning the design doesn't have.

@@ -22,9 +22,9 @@ Find the design language before touching Palet: CSS custom properties, a Tailwin
 - Names use `/` for groups and follow Palet's theme, so they become classes: `color/primary` (`bg-primary`), `space/4` (`gap-4`, `p-4`), `radius/md` (`rounded-md`), `text/sm` (`text-sm`), `font/body` (`font-body`). Keep the repo's own names inside those groups so design-to-code maps back cleanly.
 - Then `get_variables` to see what exists and the collection and mode ids.
 
-## 4. Draw with write_html
+## 4. Draw with `write`
 
-`write_html(documentId, html, parentId: <pageId>, baseVersion: "latest", id, check: true)`:
+`write(documentId, html, parentId: <pageId>, baseVersion: "latest", id, check: true)`:
 
 - Style with Tailwind classes, so tokens bind by name: `<div class="flex gap-4 p-4 rounded-md bg-surface">`. A token without a theme class: `prefix-(--name)`, e.g. `shadow-(--shadow-card)`. No inline `style`, no literal colours, no `var(--x, #fallback)`.
 - Root elements go on the page with `style="left: 80px; top: 80px"` (the one place inline style stays). Give each a `data-name` ("Settings / Desktop").
