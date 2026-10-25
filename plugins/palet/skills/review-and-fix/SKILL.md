@@ -29,7 +29,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## 3. Fix with the smallest write
 
-- `get_html(documentId, nodeId)` for the frame (compact form: classes, instances by name with props; `format: "tailwind"` if the tool still offers the choice), change only what's wrong, and `write_html` it back with that `version` as `baseVersion` and `check: true`. Check the result's `ignored` for classes that did nothing.
+- `get_html(documentId, nodeId)` for the frame (compact form: classes, instances by name with props), change only what's wrong, and `write_html` it back with that `version` as `baseVersion` and `check: true`. Check the result's `ignored` for classes that did nothing.
 - For one property on one layer, `apply_transaction` with an `update` op is smaller and safer.
 - A prop on one instance (`<Row title="…"/>`) changes that instance only; fix the component's `<template data-component>` if every instance has the problem. An instance's `class` sets only its box.
 - Repeat until `inspect` returns `issues: []` for every frame you touched, then `render` once more.

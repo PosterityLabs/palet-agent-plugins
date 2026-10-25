@@ -13,7 +13,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## 2. Read it three ways
 
-- `get_html(documentId, nodeId)`: the structure in Palet's compact form (pass `format: "tailwind"` if the tool still offers the choice): Tailwind classes, instances by name with props (`<Row title="General"/>`). It's flexbox and grid, close to what you'll write. `style="…"` appears only for values with no class (`left`, `top`).
+- `get_html(documentId, nodeId)`: the structure in Palet's compact form: Tailwind classes, instances by name with props (`<Row title="General"/>`). It's flexbox and grid, close to what you'll write. `style="…"` appears only for values with no class (`left`, `top`).
 - `get_variables(documentId)`: what each theme class or `(--name)` in that HTML means, per mode.
 - `render(documentId, nodeId)`: what it looks like. Use it to settle anything the HTML leaves unclear.
 
