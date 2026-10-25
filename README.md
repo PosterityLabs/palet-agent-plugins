@@ -2,10 +2,13 @@
 
 Use [Palet](https://palet.so) with your coding agent. The plugin connects your agent to Palet's hosted MCP server for every project, and adds skills for designing with it:
 
+- **design-on-canvas**: draw anything (screens, mockups, flows) with every colour and size bound to variables
 - **code-to-design**: build a design from your codebase's tokens and styles
 - **design-to-code**: implement a Palet design with your repo's components and tokens
 - **design-system-on-canvas**: variables in light and dark modes, components and variants
-- **review-and-fix**: find and fix clipped text, overflow and broken bindings
+- **review-and-fix**: find and fix clipped text, overflow, broken bindings and hard-coded colours
+
+Every skill draws with Palet variables, never hard-coded colours, so a theme, a dark mode or a fix is one edit. In Cursor, an always-on rule says the same.
 
 You sign in with your Palet account in the browser the first time a tool runs. There is no API key. No account yet? [Sign up](https://app.palet.so/sign-up).
 

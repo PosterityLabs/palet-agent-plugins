@@ -13,16 +13,16 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## 2. Read it three ways
 
-- `get_html(documentId, nodeId)`: the structure and every style, inline. It's flexbox and grid, close to what you'll write.
-- `get_variables(documentId)`: what each `var(--name, fallback)` in that HTML means, per mode.
+- `read(documentId, nodeId)`: the structure in Palet's compact form: Tailwind classes, instances by name with props (`<Row title="General"/>`). It's flexbox and grid, close to what you'll write. `style="…"` appears only for values with no class (`left`, `top`).
+- `get_variables(documentId)`: what each theme class or `(--name)` in that HTML means, per mode.
 - `render(documentId, nodeId)`: what it looks like. Use it to settle anything the HTML leaves unclear.
 
 ## 3. Map it to the repo, don't transcribe it
 
-- **Variables become tokens.** For each `var(--color-accent, #5856d6)`, find the repo's token with that name or value. Use the token; never paste the fallback literal. If the repo has no match, say so and propose adding one.
-- **Components become components.** A `<div data-instance="fr_…">` is a placed component. Look for the repo's existing component (Button, Card, Tab bar) and pass the instance's overrides as props. Layers inside it have `data-ref`. Only write a new component when nothing fits.
-- **Layout carries over.** Keep `display: flex` / `grid`, gap and padding as the repo expresses them (Tailwind classes, CSS modules, styled props). Drop canvas-only details: `left` / `top` of a layer of the page, `data-id`, `data-name`.
-- **Icons:** a vector named `Icon / <name>` is a Lucide icon. Use the repo's icon library with that name.
+- **Variables become tokens.** A class bound to a variable (`bg-primary`, `gap-3`, `shadow-(--shadow-card)`) names a token: find the repo's token with that name or value and use it; never paste a literal. If the repo has no match, say so and propose adding one.
+- **Components become components.** An instance printed by name (`<Row title="General" icon="mic"/>`) is a placed component. Look for the repo's existing component (Button, Card, Tab bar) and pass its props. Only write a new component when nothing fits; the definition is the `<template data-component>` on the Components page.
+- **Layout carries over.** Keep flex / grid, gap and padding as the repo expresses them (Tailwind classes carry over almost as they are; CSS modules or styled props otherwise). Drop canvas-only details: `left` / `top` of a layer of the page, `data-id`, `data-name`.
+- **Icons:** `<svg data-icon="mic">` (or an `icon="mic"` prop) is a Lucide icon. Use the repo's icon library with that name.
 - **Text:** take copy from the HTML exactly; don't shorten it.
 
 ## 4. Check before you say it's done
@@ -33,7 +33,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 ## Common mistakes
 
-- **`get_document` for reading a design.** It returns raw nodes and is large; `get_html` with `nodeId` is the readable form.
-- **Literal colours and sizes** copied from fallbacks, when the repo has tokens.
+- **`get_document` for reading a design.** It returns raw nodes and is large; `read` with `nodeId` is the readable form.
+- **Literal colours and sizes** (`bg-[#…]`, `h-[52px]`) copied over, when the repo has tokens.
 - **Rebuilding an instance's insides** instead of using the component it points to.
-- **Pixel positions.** `left` / `top` on a nested layer exist only with `position: absolute`; everything else is flow layout. Don't add absolute positioning the design doesn't have.
+- **Pixel positions.** `left` / `top` on a nested layer exist only with `absolute`; everything else is flow layout. Don't add absolute positioning the design doesn't have.

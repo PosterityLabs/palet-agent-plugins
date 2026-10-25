@@ -19,21 +19,22 @@ Find the design language before touching Palet: CSS custom properties, a Tailwin
 `set_variables(documentId, collection, modes, variables, id, baseVersion)`:
 
 - One collection per token family is fine ("Color", "Space"), or one "Tokens" collection. If the repo has a dark theme, pass `modes: ["light", "dark"]` and give both values; otherwise one mode.
-- Names use `/` for groups: `color/accent`, `space/4`, `radius/md`. Keep the repo's own names so design-to-code maps back cleanly.
-- Then `get_variables` and use each variable's `cssName`. Don't derive it yourself: a clash gets a suffix.
+- Names use `/` for groups and follow Palet's theme, so they become classes: `color/primary` (`bg-primary`), `space/4` (`gap-4`, `p-4`), `radius/md` (`rounded-md`), `text/sm` (`text-sm`), `font/body` (`font-body`). Keep the repo's own names inside those groups so design-to-code maps back cleanly.
+- Then `get_variables` to see what exists and the collection and mode ids.
 
-## 4. Draw with write_html
+## 4. Draw with `write`
 
-`write_html(documentId, html, parentId: <pageId>, baseVersion, id, check: true)`:
+`write(documentId, markup, parentId: <pageId>, baseVersion: "latest", id, check: true)`:
 
-- Bind every token value as `var(--color-accent, #5856d6)`: the name from `cssName`, and the literal fallback the layer keeps.
-- Root elements go on the page with `left` / `top`. Give each a `data-name` ("Settings / Desktop").
-- Draw one screen per call. A large screen can go in two calls: the frame first, then its sections with `parentId` set to that frame's id from `created`.
-- Icons: `search_icons`, then `insert_icon` into the frame, rather than hand-written SVG.
+- Style with Tailwind classes, so tokens bind by name: `<div class="flex gap-4 p-4 rounded-md bg-surface">`. A token without a theme class: `prefix-(--name)`, e.g. `shadow-(--shadow-card)`. No inline `style`, no literal colours, no `var(--x, #fallback)`.
+- Root elements go on the page with `style="left: 80px; top: 80px"` (the one place inline style stays). Give each a `data-name` ("Settings / Desktop").
+- A piece the repo has as a component (Button, Row, Card) is a `<template data-component="Row">` placed as `<Row title="General"/>`. A screen is templates plus instances: define each repeated piece once, then place it.
+- Draw one screen per call; a large one can go in sections, each with `parentId` set to the frame's id from `created`, in parallel with `baseVersion: "latest"`.
+- Icons: `<svg data-icon="search" class="size-4"></svg>` by name (`search_icons` to find one).
 
 ## 5. Check before you say it's done
 
-- The write's result has `issues` (from `check: true`). Fix every `text_overflow`, `clipped`, `font_missing` and `unresolved_variable` before going on.
+- The write's result has `issues` (from `check: true`) and `ignored` (classes that did nothing). Fix every `text_overflow`, `clipped`, `font_missing` and `unresolved_variable` before going on.
 - `render` the screen and look at it. Compare it with the codebase's real UI (spacing, weights, alignment), not with what you meant to draw.
 - With modes, `render` again with `modes: "<collection id>:dark"` (the collection id from `get_variables`).
 - Tell the user the document name and what you built. The document is live: they see it in Palet as you write.
@@ -41,8 +42,7 @@ Find the design language before touching Palet: CSS custom properties, a Tailwin
 ## Common mistakes
 
 - **Bare text in a `<div>`** is refused. Wrap it in `<p>`.
-- **`flex: 1`** stays raw CSS. Write `flex-grow: 1; min-width: 0`.
-- **`left` / `top` on a nested layer** do nothing unless it has `position: absolute`.
-- **Frames clip their children.** A shadow or a badge that sticks out needs `overflow: visible` on the parent.
+- **`left` / `top` on a nested layer** do nothing unless it has `absolute`.
+- **Frames clip their children.** A shadow or a badge that sticks out needs `overflow-visible` on the parent.
 - **Stale reads.** Each result carries a `version`: use it as the next `baseVersion`. On `stale_base`, read again. On `pending`, call `get_transaction`, then send the same call with the same `id`.
-- **Hard-coded values** where the repo has a token. Every colour, gap, radius and font size should be a `var(...)`.
+- **Hard-coded values** where the repo has a token. Every colour, gap, radius and font size should be a theme class or `prefix-(--name)`.
