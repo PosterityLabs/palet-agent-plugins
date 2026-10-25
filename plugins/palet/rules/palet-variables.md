@@ -1,14 +1,15 @@
 ---
-description: Every design written to Palet binds its colours, spacing, radii and type to Palet variables
+description: Every design written to Palet binds its colours, spacing, radii and type to Palet variables, through the theme classes
 alwaysApply: true
 ---
 
 When you create or change a design in Palet (any `write_html`, `apply_transaction` or `duplicate_nodes` that draws), use variables. This includes quick mockups and explorations.
 
 - Call `get_variables` before drawing. Reuse the document's collection if it has one; otherwise create a `Theme` collection with `light` and `dark` modes (`set_variables`) first.
-- Bind every colour as `var(--cssName, #fallback)`, using the `cssName` that `get_variables` returns. Bind spacing, radii and font sizes you repeat the same way.
-- Name variables by role (`color/text`, `color/surface`, `color/accent`), not by value (`color/green`).
-- Make a dark screen by setting the frame's mode, not by redrawing it with other colours.
-- Before reporting, `get_html` what you drew and make sure no colour is a bare literal outside a `var(...)` fallback.
+- The variables are the Tailwind theme of `write_html`: `color/primary` is `bg-primary`, `text-primary`, `border-primary`; `space/2` is `gap-2` and `p-2`; `radius/md` is `rounded-md`; `text/sm` is `text-sm`; `font/body` is `font-body`. A shadow or any other variable: `shadow-(--shadow-card)`, `prefix-(--name)`.
+- Never write a literal colour (`bg-[#6e4fa0]`, `style="color: #fff"`), and no `var(--x, #fallback)`. A value you repeat is a variable first (`set_variables`), then a class.
+- Name variables by role (`color/foreground`, `color/surface`, `color/primary`), not by value (`color/green`).
+- Make a dark screen by setting the frame's mode (`data-modes`), not by redrawing it with other colours.
+- Before reporting, `get_html` what you drew and make sure no colour is a bare literal.
 
 The design-on-canvas skill has the full workflow.
