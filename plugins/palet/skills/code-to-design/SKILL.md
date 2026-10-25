@@ -24,7 +24,7 @@ Find the design language before touching Palet: CSS custom properties, a Tailwin
 
 ## 4. Draw with `write`
 
-`write(documentId, html, parentId: <pageId>, baseVersion: "latest", id, check: true)`:
+`write(documentId, markup, parentId: <pageId>, baseVersion: "latest", id, check: true)`:
 
 - Style with Tailwind classes, so tokens bind by name: `<div class="flex gap-4 p-4 rounded-md bg-surface">`. A token without a theme class: `prefix-(--name)`, e.g. `shadow-(--shadow-card)`. No inline `style`, no literal colours, no `var(--x, #fallback)`.
 - Root elements go on the page with `style="left: 80px; top: 80px"` (the one place inline style stays). Give each a `data-name` ("Settings / Desktop").
