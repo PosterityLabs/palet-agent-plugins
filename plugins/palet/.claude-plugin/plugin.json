@@ -7,7 +7,7 @@
     "email": "hello@palet.so"
   },
   "homepage": "https://palet.so",
-  "repository": "https://github.com/PosterityLabs/palet-agent-plugins",
+  "repository": "https://github.com/palet-so/plugins",
   "license": "MIT",
   "keywords": ["palet", "design", "ui", "canvas", "html", "css", "design-tokens", "design-system", "code-to-design", "design-to-code", "mcp"],
   "skills": "./skills",

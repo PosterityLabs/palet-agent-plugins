@@ -1,5 +1,5 @@
 {
-  "name": "palet-agent-plugins",
+  "name": "palet-plugins",
   "type": "module",
   "private": true,
   "scripts": {

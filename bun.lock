@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "palet-agent-plugins",
+      "name": "palet-plugins",
       "devDependencies": {
         "@types/bun": "latest",
         "ajv": "^8.18.0",

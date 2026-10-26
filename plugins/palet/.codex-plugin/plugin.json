@@ -8,7 +8,7 @@
     "url": "https://palet.so"
   },
   "homepage": "https://palet.so",
-  "repository": "https://github.com/PosterityLabs/palet-agent-plugins.git",
+  "repository": "https://github.com/palet-so/plugins.git",
   "license": "MIT",
   "keywords": [
     "palet",

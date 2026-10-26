@@ -15,7 +15,7 @@ You sign in with your Palet account in the browser the first time a tool runs. T
 ## Claude Code
 
 ```sh
-claude plugin marketplace add PosterityLabs/palet-agent-plugins
+claude plugin marketplace add palet-so/plugins
 claude plugin install palet@palet
 ```
 
@@ -30,7 +30,7 @@ claude mcp add --scope user --transport http palet https://api.palet.so/mcp
 ## Codex
 
 ```sh
-codex plugin marketplace add PosterityLabs/palet-agent-plugins
+codex plugin marketplace add palet-so/plugins
 codex plugin add palet@palet
 ```
 
