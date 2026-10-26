@@ -33,6 +33,7 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 - `render` the Components page. Then `render` it with `modes: "<theme collection id>:dark"`: same layers, dark values.
 - `inspect` and fix any `unresolved_variable` (a binding with no value in that mode), `missing_component`, `text_overflow` or `clipped`. Read the write's `ignored` for classes or props that did nothing.
 - To show dark next to light, `duplicate_nodes` a screen and set `props.modes` on the copy (`{"<collection id>": "dark"}`) with `apply_transaction`, or `data-modes` in HTML.
+- When it's done, call `get_link` once, with the components or screens you built and a one-line `summary`, and end your reply with its `card`, exactly as given.
 
 ## Common mistakes
 

@@ -37,7 +37,8 @@ Find the design language before touching Palet: CSS custom properties, a Tailwin
 - The write's result has `issues` (from `check: true`) and `ignored` (classes that did nothing). Fix every `text_overflow`, `clipped`, `font_missing` and `unresolved_variable` before going on.
 - `render` the screen and look at it. Compare it with the codebase's real UI (spacing, weights, alignment), not with what you meant to draw.
 - With modes, `render` again with `modes: "<collection id>:dark"` (the collection id from `get_variables`).
-- Tell the user the document name and what you built. The document is live: they see it in Palet as you write.
+- Tell the user what you built. The document is live: they see it in Palet as you write.
+- Then call `get_link` once, with the frames you drew and a one-line `summary`, and end your reply with its `card`, exactly as given.
 
 ## Common mistakes
 

@@ -66,7 +66,8 @@ A row, card, bar or label that appears more than once is a component, defined in
 - `read` the frames you drew and scan for colour literals (`#rrggbb`, `rgb(`, `bg-[#…]`). Each one is either bound to a variable or deliberately part of the content (a photo-like gradient, a brand mark), and you can say which.
 - Read the write's `ignored` list: it names every class and prop that did nothing.
 - `inspect` for `issues`; `render` and look at it, in every mode you defined.
-- Tell the user the document name, what you built, and the variables you made or used.
+- Tell the user what you built and the variables you made or used.
+- Then call `get_link` once, with the frames you drew and a one-line `summary`, and end your reply with its `card`, exactly as given.
 
 ## Common mistakes
 

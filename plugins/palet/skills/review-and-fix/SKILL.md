@@ -38,6 +38,8 @@ If a Palet tool fails with an authentication error, tell the user to run `/mcp`,
 
 Tell the user what you found, what you changed and what's left for them to decide (copy that doesn't fit, a design choice). Don't change content or visual design they didn't ask about.
 
+Then call `get_link` once, with the frames you fixed and a one-line `summary` (`status: "needs_input"` when something is left for them to decide), and end your reply with its `card`, exactly as given.
+
 ## Common mistakes
 
 - **Leaving layers out of `write`.** A layer the HTML leaves out is deleted (the call is refused with `would_delete` unless `allowDelete: true`). Send the frame's full HTML from `read`.
